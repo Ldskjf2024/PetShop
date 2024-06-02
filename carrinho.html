@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetShop - Carrinho de Compras</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 30px;
+            height: auto;
+        }
+
+
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .cart {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item h4 {
+            margin: 0;
+        }
+
+        .cart-item p {
+            margin: 0;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .centralizar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .cart-icon {
+                position: static;
+                margin: 10px auto;
+            }
+
+            .cart {
+                width: 1000%;
+                padding: 10px;
+            }
+
+            .cart-item {
+                text-align: center;
+            }
+
+            .cart-item div {
+                margin: 5px 0;
+            }
+        }
+
+    </style>
+</head>
+<body onload="updateCart()">
+    <header>
+        <h1>PetShop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="cadastro_cliente.html">Cadastro Cliente</a></li>
+                <li><a href="cadastro_pet.html">Cadastro Pet</a></li>
+                <li><a href="agendamento.html">Agendamento</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="window.location.href='carrinho.html'" title="Ir para o carrinho">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Carrinho de Compras">
+            <span id="cartCount">0</span>
+        </div>
+    </header>
+    <main>
+        <h2>Carrinho de Compras</h2>
+        <div class="cart" id="cartTable">
+            <div class="cart-item" id="cartHeader">
+                <div>Produto</div>
+                <div>Quantidade</div>
+                <div>Preço Unitário</div>
+                <div>Total</div>
+            </div>
+        </div>
+        <div class="cart-total" id="cartTotal">Total: R$0.00</div>
+        <div class="centralizar">
+            <button onclick="window.location.href='produtos.html'">Continuar Comprando</button>
+        </div>
+        <div class="centralizar">
+            <button onclick="approvePayment()">Ir para pagamento</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 PetShop. Todos os direitos reservados.</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script src="pagamento.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetShop - Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 30px;
+            height: auto;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .produto {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .produto img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50px;
+        }
+
+        .produto p {
+            margin: 10px 0;
+        }
+
+        .produto p:last-child {
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .cart-icon {
+                position: static;
+                margin: 10px auto;
+            }
+
+            .produtos {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .produto {
+                width: 80%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body onload="updateCartCount()">
+    <header>
+        <h1>PetShop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="cadastro_cliente.html">Cadastro Cliente</a></li>
+                <li><a href="cadastro_pet.html">Cadastro Pet</a></li>
+                <li><a href="agendamento.html">Agendamento</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="window.location.href='carrinho.html'" title="Ir para o carrinho">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Carrinho de Compras">
+            <span id="cartCount">0</span>
+        </div>
+    </header>
+    <main>
+        <h2>Produtos</h2>
+        <div class="produtos">
+            <div class="produto">
+                <img src="https://images.petz.com.br/fotos/1708614057884.jpg" alt="Ração Seca">
+                <h3>Ração Seca</h3>
+                <p>Ração Golden Special para Cães Adultos Sabor Frango e Carne</p>
+                <p>R$ 134,99</p>
+                <button onclick="addToCart('Ração Seca', 1, 134.99)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="https://images.petz.com.br/fotos/1658154560837.jpg" alt="Ração úmida">
+                <h3>Ração úmida</h3>
+                <p>Ração Úmida Golden Gourmet para Cães Adultos de Porte Pequeno Sabor Carne 85g</p>
+                <p>R$ 3,59</p>
+                <button onclick="addToCart('Ração úmida', 1, 3.59)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 PetShop. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function addToCart(productName, quantity, price) {
+    var cartData = JSON.parse(localStorage.getItem('cartData')) || [];
+    var existingProductIndex = cartData.findIndex(item => item.productName === productName);
+
+    if (existingProductIndex !== -1) {
+        cartData[existingProductIndex].quantity += quantity;
+    } else {
+        cartData.push({ productName, quantity, price });
+    }
+
+    localStorage.setItem('cartData', JSON.stringify(cartData));
+    updateCartCount();
+
+    // Adiciona a mensagem de alerta
+    alert('Produto adicionado ao carrinho');
+}
+    </script>
+        <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetShop - Página Inicial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/vetores-premium/vector-pintado-a-mao-aquarela-abstrato-aquarela-fundo_921039-8215.jpg?w=826');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .cart-icon img {
+            width: 30px;
+            height: auto;
+        }
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .img-pequena {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .cart-icon {
+                position: static;
+                margin: 10px auto;
+            }
+
+            .carousel-inner img {
+                width: 100%;
+                height: auto;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PetShop</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="cadastro_cliente.html">Cadastro Cliente</a></li>
+                <li><a href="cadastro_pet.html">Cadastro Pet</a></li>
+                <li><a href="agendamento.html">Agendamento</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="window.location.href='carrinho.html'" title="Ir para o carrinho">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/shopping-cart.png" alt="Carrinho de Compras">
+            <span id="cartCount">0</span>
+        </div>
+    </header>
+    <main>
+        <h2>Sobre Nós</h2>
+        <p>Bem-vindo à PetShop, sua loja de confiança para todos os cuidados e necessidades do seu pet. Oferecemos uma ampla gama de produtos e serviços para garantir que seu animal de estimação esteja sempre saudável e feliz.</p>
+
+        <!-- Carrossel de Imagens -->
+        <div id="petshopCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="agendamento.html">
+                        <img src="imagens/banho.png" class="img-pequena" alt="Imagem de um banho">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="produtos.html">
+                        <img src="https://img.freepik.com/vetores-premium/pet-shop-veterinario-com-alimentos-para-animais_24877-61101.jpg?w=740" class="img-pequena" alt="ração">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="servicos.html">
+                        <img src="imagens/servico.webp" class="img-pequena" alt="valor">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section class="contato">
+            <h2><br>Contato</h2>
+            <p>Entre em contato conosco para mais informações sobre nossos produtos e serviços.</p>
+            <p>Telefone: (51) 1234-5678</p>
+            <p>Email: contato@petshop.com.br</p>
+            <p><br><br>Formas de pagamento</p>
+            <img src="https://www.petlove.com.br/static/uploads/images/payment/methods.png" alt="Boleto, cartões de crédito e pix" loading="lazy" width="400" height="24" class="footer__payments-image">
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop. Todos os direitos reservados.</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
